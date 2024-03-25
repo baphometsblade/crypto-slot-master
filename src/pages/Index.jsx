@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Flex, Heading, Image, Input, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, CardHeader, Flex, Heading, Image, Input, InputGroup, InputLeftElement, SimpleGrid, Stack, Table, Tbody, Td, Text, Tr, useToast } from "@chakra-ui/react";
 import { FaCoins, FaCreditCard, FaBitcoin } from "react-icons/fa";
 
 const SlotMachine = ({ config, toast }) => {
@@ -176,7 +176,7 @@ const Index = () => {
       <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="lg">
+      <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="dark-lg" backgroundImage="url('/images/casinobg.jpg')" backgroundSize="cover" backgroundPosition="center">
         <SlotMachine
           config={{
             theme: "Classic",
@@ -244,13 +244,165 @@ const Index = () => {
       <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
       </Text>
-      <Flex direction={["column", "row"]} justify="space-around" wrap="wrap">
-        <PaymentOption icon={<FaCoins size={24} />} title="Deposit Coins" onSubmit={handleDeposit} />
-        <PaymentOption icon={<FaCreditCard size={24} />} title="Visa/Mastercard" onSubmit={handleDeposit} />
-        <PaymentOption icon={<FaBitcoin size={24} />} title="Cryptocurrency" onSubmit={handleDeposit} />
-        <PaymentOption icon={<FaCoins size={24} />} title="Withdraw Coins" onSubmit={handleWithdrawal} />
-      </Flex>
-      <Rules />
+      <SimpleGrid columns={[1, null, 2]} spacing={8} justifyItems="center" mb={8}>
+        <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
+          <CardHeader>
+            <Heading size="md">Deposit Coins</Heading>
+          </CardHeader>
+          <CardBody>
+            <Stack spacing={4}>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none" children={<FaCoins color="gray.300" />} />
+                <Input type="number" placeholder="Amount" />   
+              </InputGroup>
+              <Button colorScheme="green">Deposit</Button>
+            </Stack>
+          </CardBody>
+        </Card>
+        
+        <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
+          <CardHeader>
+            <Heading size="md">Visa/Mastercard</Heading>  
+          </CardHeader>
+          <CardBody>
+            <Stack spacing={4}>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none" children={<FaCreditCard color="gray.300" />} />
+                <Input type="number" placeholder="Amount" />
+              </InputGroup>
+              <Button colorScheme="green">Deposit</Button>
+            </Stack>
+          </CardBody>
+        </Card>
+        
+        <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
+          <CardHeader>
+            <Heading size="md">Cryptocurrency</Heading>
+          </CardHeader>  
+          <CardBody>
+            <Stack spacing={4}>
+              <InputGroup>
+                <InputLeftElement pointerEvents="none" children={<FaBitcoin color="gray.300" />} />
+                <Input type="number" placeholder="Amount" />
+              </InputGroup>
+              <Button colorScheme="green">Deposit</Button>  
+            </Stack>
+          </CardBody>
+        </Card>
+        
+        <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
+          <CardHeader>
+            <Heading size="md">Withdraw Coins</Heading>
+          </CardHeader>
+          <CardBody>
+            <Stack spacing={4}>  
+              <InputGroup>
+                <InputLeftElement pointerEvents="none" children={<FaCoins color="gray.300" />} />
+                <Input type="number" placeholder="Amount" />
+              </InputGroup>
+              <Button colorScheme="red">Withdraw</Button>
+            </Stack>
+          </CardBody>
+        </Card>
+      </SimpleGrid>
+      <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.800">
+        <Heading size="lg" mb={4} textAlign="center" color="white">
+          Payout Rules
+        </Heading>
+        <Table variant="simple" size="sm" color="white">
+          <Tbody>
+            <Tr>
+              <Td>3 x 7️⃣</Td>
+              <Td>Jackpot!</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 💎</Td>
+              <Td>40% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 🍒</Td>
+              <Td>25% of Jackpot</Td>  
+            </Tr>
+            <Tr>
+              <Td>3 x 🔔</Td>
+              <Td>20% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x ⭐</Td>
+              <Td>15% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 🍀</Td>
+              <Td>10% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>2 matching symbols</Td>
+              <Td>5% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>🌟</Td>
+              <Td>2% of Jackpot multiplied by up to 5x</Td>
+            </Tr>
+            <Tr>
+              <Td>3 of any other matching symbol</Td>
+              <Td>1/64 Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>🎰</Td>
+              <Td>Triggers the bonus feature!</Td>
+            </Tr>
+          </Tbody>  
+        </Table>
+      </Box>
+    <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.800">
+        <Heading size="lg" mb={4} textAlign="center" color="white">
+          Payout Rules
+        </Heading>
+        <Table variant="simple" size="sm" color="white">
+          <Tbody>
+            <Tr>
+              <Td>3 x 7️⃣</Td>
+              <Td>Jackpot!</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 💎</Td>
+              <Td>40% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 🍒</Td>
+              <Td>25% of Jackpot</Td>  
+            </Tr>
+            <Tr>
+              <Td>3 x 🔔</Td>
+              <Td>20% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x ⭐</Td>
+              <Td>15% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>3 x 🍀</Td>
+              <Td>10% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>2 matching symbols</Td>
+              <Td>5% of Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>🌟</Td>
+              <Td>2% of Jackpot multiplied by up to 5x</Td>
+            </Tr>
+            <Tr>
+              <Td>3 of any other matching symbol</Td>
+              <Td>1/64 Jackpot</Td>
+            </Tr>
+            <Tr>
+              <Td>🎰</Td>
+              <Td>Triggers the bonus feature!</Td>
+            </Tr>
+          </Tbody>  
+        </Table>
+      </Box>
     </Box>
   );
 };
