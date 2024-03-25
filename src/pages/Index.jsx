@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Box, Button, Flex, Heading, Image, Input, Text, useToast } from "@chakra-ui/react";
 import { FaCoins, FaCreditCard, FaBitcoin } from "react-icons/fa";
 
-const SlotMachine = ({ theme, jackpot }) => {
+const SlotMachine = ({ theme, jackpot, toast }) => {
   const [result, setResult] = useState(["🍒", "🍒", "🍒"]);
   const [balance, setBalance] = useState(100);
 
   const spin = () => {
     if (balance >= 1) {
       setBalance(balance - 1);
-      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰"];
+      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰", "🍍", "🥝", "🍇", "🍓", "🍭", "🎲", "🎯", "🎳", "🏆", "💰"];
       const newResult = [symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)]];
       setResult(newResult);
 
@@ -19,8 +19,24 @@ const SlotMachine = ({ theme, jackpot }) => {
         setBalance(balance + jackpot / 2);
       } else if (newResult.every((symbol) => symbol === "🍒")) {
         setBalance(balance + jackpot / 4);
+      } else if (newResult.every((symbol) => symbol === "🔔")) {
+        setBalance(balance + jackpot / 8);
+      } else if (newResult.every((symbol) => symbol === "⭐")) {
+        setBalance(balance + jackpot / 16);
+      } else if (newResult.every((symbol) => symbol === "🍀")) {
+        setBalance(balance + jackpot / 32);
       } else if (newResult.every((symbol) => symbol === newResult[0])) {
-        setBalance(balance + jackpot / 10);
+        setBalance(balance + jackpot / 64);
+      }
+
+      if (newResult.includes("🎰")) {
+        toast({
+          title: "Bonus Feature Triggered!",
+          description: "Enjoy your free spins!",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       }
     }
   };
@@ -76,7 +92,12 @@ const Rules = () => (
     <Text color="white">
       3 x 7️⃣ = Jackpot! <br />
       3 x 💎 = 1/2 Jackpot <br />
-      3 x 🍒 = 1/4 Jackpot <br />3 of any other matching symbol = 1/10 Jackpot
+      3 x 🍒 = 1/4 Jackpot <br />
+      3 x 🔔 = 1/8 Jackpot <br />
+      3 x ⭐ = 1/16 Jackpot <br />
+      3 x 🍀 = 1/32 Jackpot <br />
+      3 of any other matching symbol = 1/64 Jackpot <br />
+      🎰 triggers the bonus feature!
     </Text>
   </Box>
 );
@@ -123,16 +144,16 @@ const Index = () => {
         Double Diamond Slots
       </Heading>
       <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="lg">
-        <SlotMachine theme="Classic" jackpot={5000} />
-        <SlotMachine theme="Lucky 7" jackpot={2500} />
-        <SlotMachine theme="Fruit Frenzy" jackpot={1000} />
-        <SlotMachine theme="Golden Wheel" jackpot={500} />
-        <SlotMachine theme="Diamond Deluxe" jackpot={250} />
-        <SlotMachine theme="Mega Fortune" jackpot={100} />
-        <SlotMachine theme="Royal Riches" jackpot={50} />
-        <SlotMachine theme="Jackpot Jester" jackpot={25} />
-        <SlotMachine theme="Cash Carnival" jackpot={10} />
-        <SlotMachine theme="Bonus Bonanza" jackpot={5} />
+        <SlotMachine theme="Classic" jackpot={5000} toast={toast} />
+        <SlotMachine theme="Lucky 7" jackpot={2500} toast={toast} />
+        <SlotMachine theme="Fruit Frenzy" jackpot={1000} toast={toast} />
+        <SlotMachine theme="Golden Wheel" jackpot={500} toast={toast} />
+        <SlotMachine theme="Diamond Deluxe" jackpot={250} toast={toast} />
+        <SlotMachine theme="Mega Fortune" jackpot={100} toast={toast} />
+        <SlotMachine theme="Royal Riches" jackpot={50} toast={toast} />
+        <SlotMachine theme="Jackpot Jester" jackpot={25} toast={toast} />
+        <SlotMachine theme="Cash Carnival" jackpot={10} toast={toast} />
+        <SlotMachine theme="Bonus Bonanza" jackpot={5} toast={toast} />
       </Flex>
       <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
