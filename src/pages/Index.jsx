@@ -58,7 +58,7 @@ const SlotMachine = ({ theme, jackpot, toast }) => {
       <Heading size="lg" mb={4}>
         {theme} Slot Machine
       </Heading>
-      <Image src={`https://source.unsplash.com/featured/?${theme},slot,machine`} alt={`${theme} Slot Machine`} mb={4} mx="auto" />
+      <Image src={`../assets/${theme.toLowerCase().replace(/\s/g, "")}.jpg`} alt={`${theme} Slot Machine`} mb={4} mx="auto" />
       <Flex justify="center" mb={4}>
         <Text fontSize="4xl" mx={2}>
           {result[0]}
