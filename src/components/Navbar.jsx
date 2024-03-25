@@ -23,6 +23,8 @@ const Navbar = () => {
         <Link to="/cashcarnival">Cash Carnival</Link>
         <Spacer />
         <Link to="/diamonddeluxe">Diamond Deluxe</Link>
+        <Spacer />
+        <Link to="/bonusbonanza">Bonus Bonanza</Link>
       </Box>
     </Flex>
   );

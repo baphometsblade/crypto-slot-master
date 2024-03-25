@@ -5,10 +5,6 @@ const SlotMachine = ({ config }) => {
   const [slots, setSlots] = useState(Array(3).fill(config.symbols[0]));
   const [balance, setBalance] = useState(1000);
   const [bet, setBet] = useState(config.betOptions[0]);
-  const [paylines, setPaylines] = useState(1);
-  const [jackpot, setJackpot] = useState(config.jackpot);
-  const [bonusGame, setBonusGame] = useState(null);
-  const [gamble, setGamble] = useState(null);
 
   const spin = () => {
     if (balance >= bet * paylines) {
