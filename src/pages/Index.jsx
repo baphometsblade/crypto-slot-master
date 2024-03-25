@@ -99,11 +99,11 @@ const Index = () => {
   };
 
   return (
-    <Box p={8} bg="gray.900" minHeight="100vh">
-      <Heading size="2xl" mb={8} textAlign="center" color="white">
+    <Box p={8} bg="gray.800" minHeight="100vh">
+      <Heading size="3xl" mb={8} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={8} borderRadius="lg">
+      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.700" p={8} borderRadius="lg">
         <SlotMachine theme="Classic" jackpot={5000} />
         <SlotMachine theme="Lucky 7" jackpot={2500} />
         <SlotMachine theme="Fruit Frenzy" jackpot={1000} />
@@ -115,7 +115,7 @@ const Index = () => {
         <SlotMachine theme="Cash Carnival" jackpot={10} />
         <SlotMachine theme="Bonus Bonanza" jackpot={5} />
       </Flex>
-      <Text mb={4} textAlign="center">
+      <Text mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
       </Text>
       <Flex justify="space-around" wrap="wrap">
