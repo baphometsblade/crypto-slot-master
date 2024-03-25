@@ -14,17 +14,24 @@ const Navbar = () => {
       <Box display={{ base: "block", md: "none" }}>{}</Box>
 
       <Box display={{ base: "none", md: "flex" }} width={{ base: "full", md: "auto" }} alignItems="center">
-        <Link to="/">Classic</Link>
-        <Spacer />
-        <Link to="/lucky7">Lucky 7</Link>
-        <Spacer />
-        <Link to="/fruitfrenzy">Fruit Frenzy</Link>
-        <Spacer />
-        <Link to="/cashcarnival">Cash Carnival</Link>
-        <Spacer />
-        <Link to="/diamonddeluxe">Diamond Deluxe</Link>
-        <Spacer />
-        <Link to="/bonusbonanza">Bonus Bonanza</Link>
+        <Link to="/" style={{ marginRight: "1rem", fontWeight: "bold" }}>
+          Classic
+        </Link>
+        <Link to="/lucky7" style={{ marginRight: "1rem" }}>
+          Lucky 7
+        </Link>
+        <Link to="/fruitfrenzy" style={{ marginRight: "1rem" }}>
+          Fruit Frenzy
+        </Link>
+        <Link to="/cashcarnival" style={{ marginRight: "1rem" }}>
+          Cash Carnival
+        </Link>
+        <Link to="/diamonddeluxe" style={{ marginRight: "1rem" }}>
+          Diamond Deluxe
+        </Link>
+        <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
+          Bonus Bonanza
+        </Link>
       </Box>
     </Flex>
   );

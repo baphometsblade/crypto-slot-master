@@ -3,6 +3,10 @@ import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
 
 const SlotMachine = ({ config }) => {
   const [slots, setSlots] = useState(Array(3).fill(config.symbols[0]));
+  const [jackpot, setJackpot] = useState(config.jackpot);
+  const [paylines, setPaylines] = useState(1);
+  const [bonusGame, setBonusGame] = useState(null);
+  const [gamble, setGamble] = useState(null);
   const [balance, setBalance] = useState(1000);
   const [bet, setBet] = useState(config.betOptions[0]);
 
