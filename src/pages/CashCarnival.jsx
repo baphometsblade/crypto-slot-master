@@ -11,7 +11,7 @@ const CashCarnival = () => {
       <SlotMachine
         config={{
           theme: "Cash Carnival",
-          symbols: ["🤡", "🎪", "🎡", "🎢", "🍭", "🍿", "💰", "🎟️"],
+          symbols: ["🤡", "🎪", "🎡", "🎢", "🍭", "🍿", "💰", "🎟️", "🃏"],
           payouts: [
             { symbols: ["🍭", "🍭", "🍭"], payout: 5 },
             { symbols: ["🍿", "🍿", "🍿"], payout: 10 },
@@ -21,10 +21,16 @@ const CashCarnival = () => {
             { symbols: ["🤡", "🤡", "🤡"], payout: 250 },
             { symbols: ["💰", "💰", "💰"], payout: 1000 },
           ],
-          jackpot: 5000,
+          jackpot: 10000,
+          jackpotSymbol: "🃏",
           bonusSymbol: "🎟️",
           bonusMultiplier: 3,
-          betOptions: [1, 2, 5, 10, 20],
+          betOptions: [1, 2, 5, 10, 20, 50, 100],
+          gamble: {
+            type: "color",
+            choices: ["Red", "Black"],
+            multiplier: 2,
+          },
         }}
       />
     </Box>
