@@ -9,12 +9,18 @@ const SlotMachine = ({ theme, jackpot }) => {
   const spin = () => {
     if (balance >= 1) {
       setBalance(balance - 1);
-      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣"];
+      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰"];
       const newResult = [symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)]];
       setResult(newResult);
 
-      if (newResult.every((symbol) => symbol === newResult[0])) {
+      if (newResult.every((symbol) => symbol === "7️⃣")) {
         setBalance(balance + jackpot);
+      } else if (newResult.every((symbol) => symbol === "💎")) {
+        setBalance(balance + jackpot / 2);
+      } else if (newResult.every((symbol) => symbol === "🍒")) {
+        setBalance(balance + jackpot / 4);
+      } else if (newResult.every((symbol) => symbol === newResult[0])) {
+        setBalance(balance + jackpot / 10);
       }
     }
   };
@@ -24,7 +30,7 @@ const SlotMachine = ({ theme, jackpot }) => {
       <Heading size="lg" mb={4}>
         {theme} Slot Machine
       </Heading>
-      <Image src={`https://images.unsplash.com/photo-1605459862899-f506150a7a80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MDcxMzJ8MHwxfHNlYXJjaHwxfHxzbG90JTIwbWFjaGluZSUyMCUyNCU3QnRoZW1lJTdEfGVufDB8fHx8MTcxMTA3MTM3MHww&ixlib=rb-4.0.3&q=80&w=1080`} alt={`${theme} Slot Machine`} mb={4} mx="auto" />
+      <Image src={`https://source.unsplash.com/featured/?${theme},slot,machine`} alt={`${theme} Slot Machine`} mb={4} mx="auto" />
       <Flex justify="center" mb={4}>
         <Text fontSize="4xl" mx={2}>
           {result[0]}
@@ -61,6 +67,19 @@ const PaymentOption = ({ icon, title, onSubmit }) => {
     </Box>
   );
 };
+
+const Rules = () => (
+  <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.700">
+    <Heading size="lg" mb={4} textAlign="center" color="white">
+      Payout Rules
+    </Heading>
+    <Text color="white">
+      3 x 7️⃣ = Jackpot! <br />
+      3 x 💎 = 1/2 Jackpot <br />
+      3 x 🍒 = 1/4 Jackpot <br />3 of any other matching symbol = 1/10 Jackpot
+    </Text>
+  </Box>
+);
 
 const Index = () => {
   const toast = useToast();
@@ -124,6 +143,7 @@ const Index = () => {
         <PaymentOption icon={<FaBitcoin size={24} />} title="Cryptocurrency" onSubmit={handleDeposit} />
         <PaymentOption icon={<FaCoins size={24} />} title="Withdraw Coins" onSubmit={handleWithdrawal} />
       </Flex>
+      <Rules />
     </Box>
   );
 };
