@@ -9,22 +9,34 @@ const SlotMachine = ({ theme, jackpot, toast }) => {
   const spin = () => {
     if (balance >= 1) {
       setBalance(balance - 1);
-      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰", "🍍", "🥝", "🍇", "🍓", "🍭", "🎲", "🎯", "🎳", "🏆", "💰"];
+      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰", "🍍", "🥝", "🍇", "🍓", "🍭", "🎲", "🎯", "🎳", "🏆", "💰", "🌟", "🍀", "🎁", "💣", "💵"];
       const newResult = [symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)]];
       setResult(newResult);
 
       if (newResult.every((symbol) => symbol === "7️⃣")) {
         setBalance(balance + jackpot);
       } else if (newResult.every((symbol) => symbol === "💎")) {
-        setBalance(balance + jackpot / 2);
+        setBalance(balance + jackpot * 0.4);
       } else if (newResult.every((symbol) => symbol === "🍒")) {
-        setBalance(balance + jackpot / 4);
+        setBalance(balance + jackpot * 0.25);
       } else if (newResult.every((symbol) => symbol === "🔔")) {
-        setBalance(balance + jackpot / 8);
+        setBalance(balance + jackpot * 0.2);
       } else if (newResult.every((symbol) => symbol === "⭐")) {
-        setBalance(balance + jackpot / 16);
+        setBalance(balance + jackpot * 0.15);
       } else if (newResult.every((symbol) => symbol === "🍀")) {
-        setBalance(balance + jackpot / 32);
+        setBalance(balance + jackpot * 0.1);
+      } else if (newResult.slice(0, 2).every((symbol) => symbol === newResult[0]) || newResult.slice(1).every((symbol) => symbol === newResult[1])) {
+        setBalance(balance + jackpot * 0.05);
+      } else if (newResult.includes("🌟")) {
+        const multiplier = Math.floor(Math.random() * 5) + 1;
+        setBalance(balance + jackpot * 0.02 * multiplier);
+        toast({
+          title: `${multiplier}x Multiplier!`,
+          description: `Your winnings have been multiplied by ${multiplier}!`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       } else if (newResult.every((symbol) => symbol === newResult[0])) {
         setBalance(balance + jackpot / 64);
       }
@@ -91,11 +103,13 @@ const Rules = () => (
     </Heading>
     <Text color="white">
       3 x 7️⃣ = Jackpot! <br />
-      3 x 💎 = 1/2 Jackpot <br />
-      3 x 🍒 = 1/4 Jackpot <br />
-      3 x 🔔 = 1/8 Jackpot <br />
-      3 x ⭐ = 1/16 Jackpot <br />
-      3 x 🍀 = 1/32 Jackpot <br />
+      3 x 💎 = 40% of Jackpot <br />
+      3 x 🍒 = 25% of Jackpot <br />
+      3 x 🔔 = 20% of Jackpot <br />
+      3 x ⭐ = 15% of Jackpot <br />
+      3 x 🍀 = 10% of Jackpot <br />
+      2 matching symbols = 5% of Jackpot <br />
+      🌟 = 2% of Jackpot multiplied by up to 5x <br />
       3 of any other matching symbol = 1/64 Jackpot <br />
       🎰 triggers the bonus feature!
     </Text>
