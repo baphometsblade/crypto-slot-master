@@ -99,21 +99,21 @@ const Index = () => {
   };
 
   return (
-    <Box p={8}>
-      <Heading size="xl" mb={8} textAlign="center">
+    <Box p={8} bg="gray.900" minHeight="100vh">
+      <Heading size="2xl" mb={8} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex justify="space-around" mb={8} wrap="wrap">
-        <SlotMachine theme="Fiesta" jackpot={1000} />
-        <SlotMachine theme="Mariachi" jackpot={500} />
-        <SlotMachine theme="Tequila" jackpot={250} />
-        <SlotMachine theme="Sombrero" jackpot={100} />
-        <SlotMachine theme="Cactus" jackpot={50} />
-        <SlotMachine theme="Chili Pepper" jackpot={25} />
-        <SlotMachine theme="Piñata" jackpot={10} />
-        <SlotMachine theme="Maracas" jackpot={5} />
-        <SlotMachine theme="Guacamole" jackpot={2} />
-        <SlotMachine theme="Tortilla" jackpot={1} />
+      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={8} borderRadius="lg">
+        <SlotMachine theme="Classic" jackpot={5000} />
+        <SlotMachine theme="Lucky 7" jackpot={2500} />
+        <SlotMachine theme="Fruit Frenzy" jackpot={1000} />
+        <SlotMachine theme="Golden Wheel" jackpot={500} />
+        <SlotMachine theme="Diamond Deluxe" jackpot={250} />
+        <SlotMachine theme="Mega Fortune" jackpot={100} />
+        <SlotMachine theme="Royal Riches" jackpot={50} />
+        <SlotMachine theme="Jackpot Jester" jackpot={25} />
+        <SlotMachine theme="Cash Carnival" jackpot={10} />
+        <SlotMachine theme="Bonus Bonanza" jackpot={5} />
       </Flex>
       <Text mb={4} textAlign="center">
         Your Balance: {balance} coins
