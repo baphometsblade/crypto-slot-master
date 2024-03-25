@@ -118,11 +118,11 @@ const Index = () => {
   };
 
   return (
-    <Box p={8} bg="gray.900" minHeight="100vh">
-      <Heading size="4xl" mb={8} textAlign="center" color="white">
+    <Box p={[4, 8]} bg="gray.900" minHeight="100vh">
+      <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={8} borderRadius="lg" boxShadow="lg">
+      <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="lg">
         <SlotMachine theme="Classic" jackpot={5000} />
         <SlotMachine theme="Lucky 7" jackpot={2500} />
         <SlotMachine theme="Fruit Frenzy" jackpot={1000} />
@@ -134,10 +134,10 @@ const Index = () => {
         <SlotMachine theme="Cash Carnival" jackpot={10} />
         <SlotMachine theme="Bonus Bonanza" jackpot={5} />
       </Flex>
-      <Text mb={4} textAlign="center" color="white">
+      <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
       </Text>
-      <Flex justify="space-around" wrap="wrap">
+      <Flex direction={["column", "row"]} justify="space-around" wrap="wrap">
         <PaymentOption icon={<FaCoins size={24} />} title="Deposit Coins" onSubmit={handleDeposit} />
         <PaymentOption icon={<FaCreditCard size={24} />} title="Visa/Mastercard" onSubmit={handleDeposit} />
         <PaymentOption icon={<FaBitcoin size={24} />} title="Cryptocurrency" onSubmit={handleDeposit} />
