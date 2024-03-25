@@ -101,7 +101,7 @@ const Index = () => {
   return (
     <Box p={8}>
       <Heading size="xl" mb={8} textAlign="center">
-        5 Gringos Slot Game
+        Double Diamond Slots
       </Heading>
       <Flex justify="space-around" mb={8} wrap="wrap">
         <SlotMachine theme="Fiesta" jackpot={1000} />
