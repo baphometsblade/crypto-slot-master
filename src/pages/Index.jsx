@@ -2,55 +2,74 @@ import React, { useState } from "react";
 import { Box, Button, Flex, Heading, Image, Input, Text, useToast } from "@chakra-ui/react";
 import { FaCoins, FaCreditCard, FaBitcoin } from "react-icons/fa";
 
-const SlotMachine = ({ theme, jackpot, toast }) => {
-  const [result, setResult] = useState(["🍒", "🍒", "🍒"]);
-  const [balance, setBalance] = useState(100);
+const SlotMachine = ({ config, toast }) => {
+  const { theme, symbols, payouts, jackpot, bonusSymbol, bonusMultiplier, betOptions } = config;
+
+  const [result, setResult] = useState([symbols[0], symbols[0], symbols[0]]);
+  const [balance, setBalance] = useState(1000);
+  const [bet, setBet] = useState(betOptions[0]);
+  const [isBonus, setIsBonus] = useState(false);
+  const [bonusSpins, setBonusSpins] = useState(0);
 
   const spin = () => {
-    if (balance >= 1) {
-      setBalance(balance - 1);
-      const symbols = ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "💎", "🍀", "🎰", "🍍", "🥝", "🍇", "🍓", "🍭", "🎲", "🎯", "🎳", "🏆", "💰", "🌟", "🍀", "🎁", "💣", "💵"];
+    if (balance >= bet && !isBonus) {
+      setBalance(balance - bet);
       const newResult = [symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)]];
       setResult(newResult);
 
-      if (newResult.every((symbol) => symbol === "7️⃣")) {
-        setBalance(balance + jackpot);
-      } else if (newResult.every((symbol) => symbol === "💎")) {
-        setBalance(balance + jackpot * 0.4);
-      } else if (newResult.every((symbol) => symbol === "🍒")) {
-        setBalance(balance + jackpot * 0.25);
-      } else if (newResult.every((symbol) => symbol === "🔔")) {
-        setBalance(balance + jackpot * 0.2);
-      } else if (newResult.every((symbol) => symbol === "⭐")) {
-        setBalance(balance + jackpot * 0.15);
-      } else if (newResult.every((symbol) => symbol === "🍀")) {
-        setBalance(balance + jackpot * 0.1);
-      } else if (newResult.slice(0, 2).every((symbol) => symbol === newResult[0]) || newResult.slice(1).every((symbol) => symbol === newResult[1])) {
-        setBalance(balance + jackpot * 0.05);
-      } else if (newResult.includes("🌟")) {
-        const multiplier = Math.floor(Math.random() * 5) + 1;
-        setBalance(balance + jackpot * 0.02 * multiplier);
-        toast({
-          title: `${multiplier}x Multiplier!`,
-          description: `Your winnings have been multiplied by ${multiplier}!`,
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
-      } else if (newResult.every((symbol) => symbol === newResult[0])) {
-        setBalance(balance + jackpot / 64);
+      const payout = calculatePayout(newResult);
+      if (payout > 0) {
+        setBalance(balance + payout);
       }
 
-      if (newResult.includes("🎰")) {
+      if (newResult.includes(bonusSymbol)) {
+        setIsBonus(true);
+        setBonusSpins(3);
         toast({
-          title: "Bonus Feature Triggered!",
-          description: "Enjoy your free spins!",
+          title: "Bonus Round Triggered!",
+          description: "You won 3 free bonus spins!",
           status: "success",
           duration: 3000,
           isClosable: true,
         });
       }
+    } else if (isBonus && bonusSpins > 0) {
+      setBonusSpins(bonusSpins - 1);
+      const newResult = [symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)], symbols[Math.floor(Math.random() * symbols.length)]];
+      setResult(newResult);
+
+      const payout = calculatePayout(newResult) * bonusMultiplier;
+      if (payout > 0) {
+        toast({
+          title: `Bonus Payout: ${payout} coins!`,
+          description: `Your bonus spin payout is multiplied by ${bonusMultiplier}x!`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        setBalance(balance + payout);
+      }
+
+      if (bonusSpins === 1) {
+        setIsBonus(false);
+      }
     }
+  };
+
+  const calculatePayout = (result) => {
+    let payout = 0;
+
+    payouts.forEach((rule) => {
+      if (result.every((symbol) => rule.symbols.includes(symbol))) {
+        payout = rule.payout * bet;
+      }
+    });
+
+    if (result.every((symbol) => symbol === result[0])) {
+      payout = jackpot;
+    }
+
+    return payout;
   };
 
   return (
@@ -158,16 +177,69 @@ const Index = () => {
         Double Diamond Slots
       </Heading>
       <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="lg">
-        <SlotMachine theme="Classic" jackpot={5000} toast={toast} />
-        <SlotMachine theme="Lucky 7" jackpot={2500} toast={toast} />
-        <SlotMachine theme="Fruit Frenzy" jackpot={1000} toast={toast} />
-        <SlotMachine theme="Golden Wheel" jackpot={500} toast={toast} />
-        <SlotMachine theme="Diamond Deluxe" jackpot={250} toast={toast} />
-        <SlotMachine theme="Mega Fortune" jackpot={100} toast={toast} />
-        <SlotMachine theme="Royal Riches" jackpot={50} toast={toast} />
-        <SlotMachine theme="Jackpot Jester" jackpot={25} toast={toast} />
-        <SlotMachine theme="Cash Carnival" jackpot={10} toast={toast} />
-        <SlotMachine theme="Bonus Bonanza" jackpot={5} toast={toast} />
+        <SlotMachine
+          config={{
+            theme: "Classic",
+            symbols: ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "🍀"],
+            payouts: [
+              { symbols: ["🍒", "🍒", "🍒"], payout: 10 },
+              { symbols: ["🍊", "🍊", "🍊"], payout: 20 },
+              { symbols: ["🍋", "🍋", "🍋"], payout: 30 },
+              { symbols: ["🍉", "🍉", "🍉"], payout: 40 },
+              { symbols: ["🔔", "🔔", "🔔"], payout: 50 },
+              { symbols: ["⭐", "⭐", "⭐"], payout: 100 },
+              { symbols: ["7️⃣", "7️⃣", "7️⃣"], payout: 500 },
+            ],
+            jackpot: 5000,
+            bonusSymbol: "🍀",
+            bonusMultiplier: 3,
+            betOptions: [1, 2, 3, 5, 10],
+          }}
+          toast={toast}
+        />
+        <SlotMachine
+          config={{
+            theme: "Lucky 7",
+            symbols: ["🎰", "🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣"],
+            payouts: [
+              { symbols: ["🍒", "🍒", "🍒"], payout: 5 },
+              { symbols: ["🍊", "🍊", "🍊"], payout: 10 },
+              { symbols: ["🍋", "🍋", "🍋"], payout: 15 },
+              { symbols: ["🍉", "🍉", "🍉"], payout: 20 },
+              { symbols: ["🔔", "🔔", "🔔"], payout: 25 },
+              { symbols: ["⭐", "⭐", "⭐"], payout: 50 },
+              { symbols: ["7️⃣", "7️⃣", "7️⃣"], payout: 250 },
+            ],
+            jackpot: 2500,
+            bonusSymbol: "🎰",
+            bonusMultiplier: 5,
+            betOptions: [1, 2, 3, 5, 10, 20],
+          }}
+          toast={toast}
+        />
+        <SlotMachine
+          config={{
+            theme: "Fruit Frenzy",
+            symbols: ["🍒", "🍊", "🍋", "🍉", "🍇", "🍓", "🍍", "🥝"],
+            payouts: [
+              { symbols: ["🍒", "🍒", "🍒"], payout: 2 },
+              { symbols: ["🍊", "🍊", "🍊"], payout: 4 },
+              { symbols: ["🍋", "🍋", "🍋"], payout: 6 },
+              { symbols: ["🍉", "🍉", "🍉"], payout: 8 },
+              { symbols: ["🍇", "🍇", "🍇"], payout: 10 },
+              { symbols: ["🍓", "🍓", "🍓"], payout: 20 },
+              { symbols: ["🍍", "🍍", "🍍"], payout: 50 },
+              { symbols: ["🥝", "🥝", "🥝"], payout: 100 },
+            ],
+            jackpot: 1000,
+            bonusSymbol: "🍓",
+            bonusMultiplier: 2,
+            betOptions: [1, 2, 3, 5],
+          }}
+          toast={toast}
+        />
+
+        {}
       </Flex>
       <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
