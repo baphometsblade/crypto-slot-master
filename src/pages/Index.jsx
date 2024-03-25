@@ -26,7 +26,7 @@ const SlotMachine = ({ theme, jackpot }) => {
   };
 
   return (
-    <Box borderWidth={1} borderRadius="lg" p={4} textAlign="center">
+    <Box borderWidth={1} borderRadius="lg" p={4} textAlign="center" boxShadow="md" transition="all 0.2s" _hover={{ boxShadow: "lg" }}>
       <Heading size="lg" mb={4}>
         {theme} Slot Machine
       </Heading>
@@ -55,9 +55,9 @@ const PaymentOption = ({ icon, title, onSubmit }) => {
   const [amount, setAmount] = useState("");
 
   return (
-    <Box borderWidth={1} borderRadius="lg" p={4} textAlign="center">
+    <Box borderWidth={1} borderRadius="lg" p={4} textAlign="center" transition="all 0.2s" _hover={{ boxShadow: "md" }}>
       <Flex align="center" mb={4}>
-        {icon}
+        {React.cloneElement(icon, { size: 32 })}
         <Heading size="md" ml={2}>
           {title}
         </Heading>
@@ -69,7 +69,7 @@ const PaymentOption = ({ icon, title, onSubmit }) => {
 };
 
 const Rules = () => (
-  <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.700">
+  <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.800">
     <Heading size="lg" mb={4} textAlign="center" color="white">
       Payout Rules
     </Heading>
@@ -118,11 +118,11 @@ const Index = () => {
   };
 
   return (
-    <Box p={8} bg="gray.800" minHeight="100vh">
-      <Heading size="3xl" mb={8} textAlign="center" color="white">
+    <Box p={8} bg="gray.900" minHeight="100vh">
+      <Heading size="4xl" mb={8} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.700" p={8} borderRadius="lg">
+      <Flex justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={8} borderRadius="lg" boxShadow="lg">
         <SlotMachine theme="Classic" jackpot={5000} />
         <SlotMachine theme="Lucky 7" jackpot={2500} />
         <SlotMachine theme="Fruit Frenzy" jackpot={1000} />
