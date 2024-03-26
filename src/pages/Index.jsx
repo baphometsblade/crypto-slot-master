@@ -138,6 +138,20 @@ const Rules = () => (
 const Index = () => {
   const toast = useToast();
   const [balance, setBalance] = useState(100);
+  const [jackpotWon, setJackpotWon] = useState(null);
+  const [isBonusGameTriggered, setIsBonusGameTriggered] = useState(false);
+
+  const handleJackpotWin = (amount) => {
+    setJackpotWon(amount);
+  };
+
+  const handleBonusGameTrigger = () => {
+    setIsBonusGameTriggered(true);
+  };
+
+  const handleBalanceChange = (newBalance) => {
+    setBalance(newBalance);
+  };
 
   const handleDeposit = (amount) => {
     setBalance(balance + parseInt(amount));
@@ -253,16 +267,16 @@ const Index = () => {
             <Stack spacing={4}>
               <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<FaCoins color="gray.300" />} />
-                <Input type="number" placeholder="Amount" />   
+                <Input type="number" placeholder="Amount" />
               </InputGroup>
               <Button colorScheme="green">Deposit</Button>
             </Stack>
           </CardBody>
         </Card>
-        
+
         <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
           <CardHeader>
-            <Heading size="md">Visa/Mastercard</Heading>  
+            <Heading size="md">Visa/Mastercard</Heading>
           </CardHeader>
           <CardBody>
             <Stack spacing={4}>
@@ -274,28 +288,28 @@ const Index = () => {
             </Stack>
           </CardBody>
         </Card>
-        
+
         <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
           <CardHeader>
             <Heading size="md">Cryptocurrency</Heading>
-          </CardHeader>  
+          </CardHeader>
           <CardBody>
             <Stack spacing={4}>
               <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<FaBitcoin color="gray.300" />} />
                 <Input type="number" placeholder="Amount" />
               </InputGroup>
-              <Button colorScheme="green">Deposit</Button>  
+              <Button colorScheme="green">Deposit</Button>
             </Stack>
           </CardBody>
         </Card>
-        
+
         <Card maxW="sm" borderRadius="lg" boxShadow="md" bg="gray.700">
           <CardHeader>
             <Heading size="md">Withdraw Coins</Heading>
           </CardHeader>
           <CardBody>
-            <Stack spacing={4}>  
+            <Stack spacing={4}>
               <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<FaCoins color="gray.300" />} />
                 <Input type="number" placeholder="Amount" />
@@ -321,7 +335,7 @@ const Index = () => {
             </Tr>
             <Tr>
               <Td>3 x 🍒</Td>
-              <Td>25% of Jackpot</Td>  
+              <Td>25% of Jackpot</Td>
             </Tr>
             <Tr>
               <Td>3 x 🔔</Td>
@@ -351,10 +365,10 @@ const Index = () => {
               <Td>🎰</Td>
               <Td>Triggers the bonus feature!</Td>
             </Tr>
-          </Tbody>  
+          </Tbody>
         </Table>
       </Box>
-    <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.800">
+      <Box borderWidth={1} borderRadius="lg" p={4} mb={8} bg="gray.800">
         <Heading size="lg" mb={4} textAlign="center" color="white">
           Payout Rules
         </Heading>
@@ -370,7 +384,7 @@ const Index = () => {
             </Tr>
             <Tr>
               <Td>3 x 🍒</Td>
-              <Td>25% of Jackpot</Td>  
+              <Td>25% of Jackpot</Td>
             </Tr>
             <Tr>
               <Td>3 x 🔔</Td>
@@ -400,7 +414,7 @@ const Index = () => {
               <Td>🎰</Td>
               <Td>Triggers the bonus feature!</Td>
             </Tr>
-          </Tbody>  
+          </Tbody>
         </Table>
       </Box>
     </Box>

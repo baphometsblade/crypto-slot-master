@@ -9,7 +9,6 @@ import FruitFrenzy from "./pages/FruitFrenzy";
 import CashCarnival from "./pages/CashCarnival";
 import DiamondDeluxe from "./pages/DiamondDeluxe";
 
-
 function App() {
   return (
     <Router>

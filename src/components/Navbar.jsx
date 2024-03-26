@@ -35,6 +35,9 @@ const Navbar = () => {
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
         </Link>
+        <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
+          Bonus Bonanza
+        </Link>
         <Link to="/goldenwheel" style={{ marginRight: "1rem" }}>
           Golden Wheel
         </Link>
