@@ -15,6 +15,9 @@ const Navbar = () => {
 
       <Box display={{ base: "none", md: "flex" }} width={{ base: "full", md: "auto" }} alignItems="center">
         <Link to="/" style={{ marginRight: "1rem", fontWeight: "bold" }}>
+          Home
+        </Link>
+        <Link to="/classic" style={{ marginRight: "1rem" }}>
           Classic
         </Link>
         <Link to="/lucky7" style={{ marginRight: "1rem" }}>
@@ -31,6 +34,27 @@ const Navbar = () => {
         </Link>
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
+        </Link>
+        <Link to="/goldenwheel" style={{ marginRight: "1rem" }}>
+          Golden Wheel
+        </Link>
+        <Link to="/jackpotjester" style={{ marginRight: "1rem" }}>
+          Jackpot Jester
+        </Link>
+        <Link to="/megafortune" style={{ marginRight: "1rem" }}>
+          Mega Fortune
+        </Link>
+        <Link to="/royalriches" style={{ marginRight: "1rem" }}>
+          Royal Riches
+        </Link>
+        <Link to="/tournaments" style={{ marginRight: "1rem" }}>
+          Tournaments
+        </Link>
+        <Link to="/quests" style={{ marginRight: "1rem" }}>
+          Quests
+        </Link>
+        <Link to="/shop" style={{ marginRight: "1rem" }}>
+          Shop
         </Link>
       </Box>
     </Flex>
