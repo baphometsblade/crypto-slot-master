@@ -190,7 +190,7 @@ const Index = () => {
       <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
         Double Diamond Slots
       </Heading>
-      <Flex direction={["column", "row"]} justify="space-around" mb={8} wrap="wrap" bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="dark-lg" backgroundImage="url('/images/casinobg.jpg')" backgroundSize="cover" backgroundPosition="center">
+      <SimpleGrid columns={[1, 2, 3]} spacing={[4, 8, 12]} mb={8} bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="dark-lg" backgroundImage="url('/images/casinobg.jpg')" backgroundSize="cover" backgroundPosition="center">
         <SlotMachine
           config={{
             theme: "Classic",
@@ -252,9 +252,7 @@ const Index = () => {
           }}
           toast={toast}
         />
-
-        {}
-      </Flex>
+      </SimpleGrid>
       <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
         Your Balance: {balance} coins
       </Text>

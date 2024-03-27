@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 
 const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange }) => {
   const [slots, setSlots] = useState(Array(3).fill(config.symbols[0]));
@@ -11,7 +11,18 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   const [bet, setBet] = useState(config.betOptions[0]);
   const [isSpinning, setIsSpinning] = useState(false);
 
-  const spin = () => {};
+  const [lastWin, setLastWin] = useState(0);
+  const spin = () => {
+    let winnings = 0;
+
+    setLastWin(winnings);
+    setLastWin(winnings);
+  };
+
+  const maxBet = () => {
+    setBet(config.betOptions[config.betOptions.length - 1]);
+    spin();
+  };
 
   if (balance >= bet * paylines) {
     setBalance(balance - bet * paylines);
@@ -73,22 +84,26 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   };
 
   return (
-    <Box>
-      <VStack spacing={4}>
-        <Heading color="white">Balance: ${balance}</Heading>
-        <Heading color="white" size="md">
+    <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="lg">
+      <VStack spacing={6}>
+        <Heading color="white" textShadow="0 0 20px rgba(255,255,255,0.5)">
+          Balance: ${balance}
+        </Heading>
+        <Heading color="yellow.500" size="lg" textShadow="0 0 20px rgba(255,215,0,0.5)">
           Jackpot: ${jackpot.toFixed(2)}
         </Heading>
-        <Box display="flex" justifyContent="center">
-          {slots.map((line, i) => (
-            <Box key={i}>
-              {line.map((slot, j) => (
-                <Box key={j} fontSize="6xl" mx={4}>
-                  {slot}
-                </Box>
-              ))}
-            </Box>
-          ))}
+        <Box display="flex" justifyContent="center" alignItems="center" bg="gray.900" borderRadius="md" p={4} boxShadow="inner">
+          <SimpleGrid columns={3} spacing={8}>
+            {slots.map((line, i) => (
+              <Box key={i}>
+                {line.map((slot, j) => (
+                  <Box key={j} fontSize="6xl" textShadow="0 0 20px rgba(255,255,255,0.5)" transition="transform 0.5s" _hover={{ transform: "scale(1.1)" }}>
+                    {slot}
+                  </Box>
+                ))}
+              </Box>
+            ))}
+          </SimpleGrid>
         </Box>
         <Box>
           <Text color="white">Bet per line:</Text>
@@ -110,31 +125,15 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
             ))}
           </Box>
         </Box>
-        <Button onClick={() => spin()} colorScheme="green" size="lg">
+        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 20px rgba(0,255,0,0.8)" }} onClick={!isSpinning ? spin : null}>
           Spin
         </Button>
-        {bonusGame && (
-          <Box>
-            <Heading color="white">Bonus Game!</Heading>
-            {bonusGame.type === "pickAPrize" && (
-              <Box>
-                <Text color="white">Pick a prize:</Text>
-                <Box display="flex">
-                  {bonusGame.prizes.map((prize, i) => (
-                    <Button key={i} onClick={() => playBonusGame(prize)} colorScheme="purple" mx={2}>
-                      ${prize}
-                    </Button>
-                  ))}
-                </Box>
-              </Box>
-            )}
-            {bonusGame.type === "freeSpins" && (
-              <Text color="white">
-                You won {bonusGame.spins} free spins with a {bonusGame.multiplier}x multiplier!
-              </Text>
-            )}
-          </Box>
-        )}
+        <Button colorScheme="orange" size="lg" boxShadow="0 0 20px rgba(255,165,0,0.5)" _hover={{ boxShadow: "0 0 20px rgba(255,165,0,0.8)" }} ml={4} onClick={maxBet}>
+          Max Bet
+        </Button>
+        <Text color="yellow.300" fontSize="xl" mt={4}>
+          Last Win: ${lastWin}
+        </Text>
         {gamble && (
           <Box>
             <Heading color="white">Gamble your winnings!</Heading>

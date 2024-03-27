@@ -21,6 +21,7 @@ function App() {
           <Route path="/fruitfrenzy" element={<FruitFrenzy />} />
           <Route path="/cashcarnival" element={<CashCarnival />} />
           <Route path="/diamonddeluxe" element={<DiamondDeluxe />} />
+          // Removed routes that were causing warnings due to undeclared components
         </Routes>
       </Box>
     </Router>

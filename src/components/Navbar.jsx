@@ -35,6 +35,30 @@ const Navbar = () => {
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
         </Link>
+        <Link to="/goldenwheel" style={{ marginRight: "1rem" }}>
+          Golden Wheel
+        </Link>
+        <Link to="/jackpotjester" style={{ marginRight: "1rem" }}>
+          Jackpot Jester
+        </Link>
+        <Link to="/megafortune" style={{ marginRight: "1rem" }}>
+          Mega Fortune
+        </Link>
+        <Link to="/royalriches" style={{ marginRight: "1rem" }}>
+          Royal Riches
+        </Link>
+        <Link to="/leaderboard" style={{ marginRight: "1rem" }}>
+          Leaderboard
+        </Link>
+        <Link to="/achievements" style={{ marginRight: "1rem" }}>
+          Achievements  
+        </Link>
+        <Link to="/dailybonus" style={{ marginRight: "1rem" }}>
+          Daily Bonus
+        </Link>
+        <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
+          Bonus Bonanza
+        </Link>
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
         </Link>
