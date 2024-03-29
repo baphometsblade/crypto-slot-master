@@ -136,7 +136,6 @@ const Rules = () => (
 );
 
 const Index = () => {
-  const toast = useToast();
   const [balance, setBalance] = useState(100);
   const [jackpotWon, setJackpotWon] = useState(null);
   const [isBonusGameTriggered, setIsBonusGameTriggered] = useState(false);
@@ -155,33 +154,14 @@ const Index = () => {
 
   const handleDeposit = (amount) => {
     setBalance(balance + parseInt(amount));
-    toast({
-      title: "Deposit Successful",
-      description: `${amount} coins added to your balance.`,
-      status: "success",
-      duration: 3000,
-      isClosable: true,
-    });
+    // TODO: Add toast notification for successful deposit
   };
 
   const handleWithdrawal = (amount) => {
     if (balance >= amount) {
       setBalance(balance - parseInt(amount));
-      toast({
-        title: "Withdrawal Successful",
-        description: `${amount} coins withdrawn from your balance.`,
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
+      // TODO: Add toast notification for successful withdrawal
     } else {
-      toast({
-        title: "Insufficient Balance",
-        description: "You don't have enough coins to withdraw.",
-        status: "error",
-        duration: 3000,
-        isClosable: true,
-      });
     }
   };
 
@@ -208,8 +188,12 @@ const Index = () => {
             bonusSymbol: "🍀",
             bonusMultiplier: 3,
             betOptions: [1, 2, 3, 5, 10],
+            gradient: ["#ff0000", "#ff7f00"],
           }}
-          toast={toast}
+          onWin={(payout) => console.log(`You won ${payout} coins!`)}
+          onLoss={() => console.log("Better luck next time!")}
+          onJackpot={() => console.log("Jackpot!!!")}
+          onBonus={() => console.log("Bonus round triggered!")}
         />
         <SlotMachine
           config={{
@@ -228,8 +212,12 @@ const Index = () => {
             bonusSymbol: "🎰",
             bonusMultiplier: 5,
             betOptions: [1, 2, 3, 5, 10, 20],
+            gradient: ["#ffff00", "#ffd700"],
           }}
-          toast={toast}
+          onWin={(payout) => console.log(`You won ${payout} coins!`)}
+          onLoss={() => console.log("Better luck next time!")}
+          onJackpot={() => console.log("Jackpot!!!")}
+          onBonus={() => console.log("Bonus round triggered!")}
         />
         <SlotMachine
           config={{
@@ -249,8 +237,12 @@ const Index = () => {
             bonusSymbol: "🍓",
             bonusMultiplier: 2,
             betOptions: [1, 2, 3, 5],
+            gradient: ["#00ff00", "#00ff7f"],
           }}
-          toast={toast}
+          onWin={(payout) => console.log(`You won ${payout} coins!`)}
+          onLoss={() => console.log("Better luck next time!")}
+          onJackpot={() => console.log("Jackpot!!!")}
+          onBonus={() => console.log("Bonus round triggered!")}
         />
       </SimpleGrid>
       <Text fontSize={["md", "xl"]} mb={4} textAlign="center" color="white">
