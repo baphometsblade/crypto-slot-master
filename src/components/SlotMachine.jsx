@@ -16,7 +16,6 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
     let winnings = 0;
 
     setLastWin(winnings);
-    setLastWin(winnings);
   };
 
   const maxBet = () => {
@@ -125,7 +124,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
             ))}
           </Box>
         </Box>
-        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 20px rgba(0,255,0,0.8)" }} onClick={!isSpinning ? spin : null}>
+        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 20px rgba(0,255,0,0.8)" }}>
           Spin
         </Button>
         <Button colorScheme="orange" size="lg" boxShadow="0 0 20px rgba(255,165,0,0.5)" _hover={{ boxShadow: "0 0 20px rgba(255,165,0,0.8)" }} ml={4} onClick={maxBet}>

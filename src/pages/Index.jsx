@@ -152,16 +152,37 @@ const Index = () => {
     setBalance(newBalance);
   };
 
+  const toast = useToast();
+
   const handleDeposit = (amount) => {
     setBalance(balance + parseInt(amount));
-    // TODO: Add toast notification for successful deposit
+    toast({
+      title: "Deposit Successful",
+      description: `${amount} coins added to your balance`,
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
   };
 
   const handleWithdrawal = (amount) => {
     if (balance >= amount) {
       setBalance(balance - parseInt(amount));
-      // TODO: Add toast notification for successful withdrawal
+      toast({
+        title: "Withdrawal Successful",
+        description: `${amount} coins withdrawn from your balance`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } else {
+      toast({
+        title: "Insufficient Balance",
+        description: "You don't have enough coins to withdraw that amount",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 
