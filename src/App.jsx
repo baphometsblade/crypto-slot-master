@@ -8,6 +8,7 @@ import Lucky7 from "./pages/Lucky7";
 import FruitFrenzy from "./pages/FruitFrenzy";
 import CashCarnival from "./pages/CashCarnival";
 import DiamondDeluxe from "./pages/DiamondDeluxe";
+import BonusBonanza from "./pages/BonusBonanza";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/fruitfrenzy" element={<FruitFrenzy />} />
           <Route path="/cashcarnival" element={<CashCarnival />} />
           <Route path="/diamonddeluxe" element={<DiamondDeluxe />} />
+          <Route path="/bonusbonanza" element={<BonusBonanza />} />
           // Removed routes that were causing warnings due to undeclared components
         </Routes>
       </Box>
