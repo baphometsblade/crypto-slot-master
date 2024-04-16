@@ -28,7 +28,7 @@ const Classic = () => {
             { symbols: ["🎩", "🎩", "🎩"], payout: 16000 },
             { symbols: ["🍾", "🍾", "🍾"], payout: 18000 },
           ],
-          jackpot: 100000,
+          jackpot: 2000000,
           bonusSymbol: "🍀",
           bonusMultiplier: 3,
           betOptions: [1, 2, 3, 5, 10],

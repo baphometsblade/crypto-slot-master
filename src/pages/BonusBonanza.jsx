@@ -21,7 +21,7 @@ const BonusBonanza = () => {
             { symbols: ["🤑", "🤑", "🤑"], payout: 3000 },
             { symbols: ["💎", "💎", "💎"], payout: 10000 },
           ],
-          jackpot: 150000,
+          jackpot: 3000000,
           jackpotSymbol: "💎",
           bonusSymbol: "🎁",
           bonusMultiplier: 3,

@@ -28,7 +28,7 @@ const Lucky7 = () => {
             { symbols: ["🍾", "🍾", "🍾"], payout: 450 },
             { symbols: ["🏆", "🏆", "🏆"], payout: 500 },
           ],
-          jackpot: 2500,
+          jackpot: 50000,
           bonusSymbol: "🎰",
           bonusMultiplier: 5,
           betOptions: [1, 2, 3, 5, 10, 20],

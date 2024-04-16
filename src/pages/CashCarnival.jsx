@@ -21,7 +21,7 @@ const CashCarnival = () => {
             { symbols: ["🤡", "🤡", "🤡"], payout: 5000 },
             { symbols: ["💰", "💰", "💰"], payout: 20000 },
           ],
-          jackpot: 200000,
+          jackpot: 4000000,
           jackpotSymbol: "🃏",
           bonusSymbol: "🎟️",
           bonusMultiplier: 3,

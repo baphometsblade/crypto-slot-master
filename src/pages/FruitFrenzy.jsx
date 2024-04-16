@@ -22,7 +22,7 @@ const FruitFrenzy = () => {
             { symbols: ["🍍", "🍍", "🍍"], payout: 50 },
             { symbols: ["🥝", "🥝", "🥝"], payout: 100 },
           ],
-          jackpot: 1000,
+          jackpot: 20000,
           bonusSymbol: "🍓",
           bonusMultiplier: 2,
           betOptions: [1, 2, 3, 5],

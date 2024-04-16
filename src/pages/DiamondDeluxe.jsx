@@ -22,7 +22,7 @@ const DiamondDeluxe = () => {
             { symbols: ["🔷", "🔷", "🔷"], payout: 250 },
             { symbols: ["💎", "💎", "💎"], payout: 1000 },
           ],
-          jackpot: 10000,
+          jackpot: 200000,
           bonusSymbol: "💎",
           bonusMultiplier: 5,
           betOptions: [1, 2, 5, 10, 20, 50],
