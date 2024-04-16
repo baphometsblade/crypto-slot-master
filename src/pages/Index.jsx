@@ -187,7 +187,7 @@ const Index = () => {
   };
 
   return (
-    <Box p={[4, 8]} bg="gray.900" minHeight="100vh">
+    <Box p={[4, 8]} bg="gray.900" minHeight="100vh" boxShadow="xl">
       <Box bgImage="url('/images/banner.jpg')" bgPosition="center" bgRepeat="no-repeat" bgSize="cover" p={8}>
         <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
           Welcome to Double Diamond Slots

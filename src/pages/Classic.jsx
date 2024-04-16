@@ -5,7 +5,7 @@ import SlotMachine from "../components/SlotMachine";
 const Classic = () => {
   return (
     <Box p={8}>
-      <Heading size="2xl" mb={8} textAlign="center" color="white">
+      <Heading size="2xl" mb={8} textAlign="center" color="yellow.300">
         Classic Slot Machine
       </Heading>
       <SlotMachine

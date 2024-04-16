@@ -137,7 +137,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   };
 
   return (
-    <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="lg">
+    <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="xl">
       <VStack spacing={6}>
         <Heading color="white" textShadow="0 0 20px rgba(255,255,255,0.5)">
           Balance: ${balance}
