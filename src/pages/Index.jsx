@@ -188,10 +188,15 @@ const Index = () => {
 
   return (
     <Box p={[4, 8]} bg="gray.900" minHeight="100vh">
-      <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
-        Double Diamond Slots
-      </Heading>
-      <SimpleGrid columns={[1, 2, 3]} spacing={[4, 8, 12]} mb={8} bg="gray.800" p={[4, 8]} borderRadius="lg" boxShadow="dark-lg" backgroundImage="url('/images/casinobg.jpg')" backgroundSize="cover" backgroundPosition="center">
+      <Box bgImage="url('/images/banner.jpg')" bgPosition="center" bgRepeat="no-repeat" bgSize="cover" p={8}>
+        <Heading size={["2xl", "4xl"]} mb={[4, 8]} textAlign="center" color="white">
+          Welcome to Double Diamond Slots
+        </Heading>
+        <Text fontSize="xl" color="white" textAlign="center" mb={4}>
+          The ultimate online casino experience
+        </Text>
+      </Box>
+      <SimpleGrid columns={[1, 2, 3]} spacing={[4, 8, 12]} mb={8} bg="background.500" p={[4, 8]} borderRadius="lg" boxShadow="dark-lg">
         <SlotMachine
           config={{
             theme: "Classic",

@@ -13,7 +13,7 @@ import BonusBonanza from "./pages/BonusBonanza";
 function App() {
   return (
     <Router>
-      <Box bg="gray.900" minHeight="100vh">
+      <Box bg="background.500" minHeight="100vh" p={4}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Index />} />
