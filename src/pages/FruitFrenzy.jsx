@@ -11,7 +11,7 @@ const FruitFrenzy = () => {
       <SlotMachine
         config={{
           theme: "Fruit Frenzy",
-          symbols: ["🍒", "🍊", "🍋", "🍉", "🍇", "🍓", "🍍", "🥝"],
+          symbols: ["🍒", "🍊", "🍋", "🍉", "🍇", "🍓", "🍍", "🥝", "🍈", "🍑", "🍐", "🍌"],
           payouts: [
             { symbols: ["🍒", "🍒", "🍒"], payout: 2 },
             { symbols: ["🍊", "🍊", "🍊"], payout: 4 },
