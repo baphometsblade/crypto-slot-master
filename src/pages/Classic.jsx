@@ -11,7 +11,7 @@ const Classic = () => {
       <SlotMachine
         config={{
           theme: "Classic",
-          symbols: ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "🍀"],
+          symbols: ["🍒", "🍊", "🍋", "🍉", "🔔", "⭐", "7️⃣", "🍀", "🎰", "🎲", "🃏", "👑", "💎", "🎩", "🍾"],
           payouts: [
             { symbols: ["🍒", "🍒", "🍒"], payout: 10 },
             { symbols: ["🍊", "🍊", "🍊"], payout: 20 },
@@ -20,6 +20,13 @@ const Classic = () => {
             { symbols: ["🔔", "🔔", "🔔"], payout: 50 },
             { symbols: ["⭐", "⭐", "⭐"], payout: 100 },
             { symbols: ["7️⃣", "7️⃣", "7️⃣"], payout: 500 },
+            { symbols: ["🎰", "🎰", "🎰"], payout: 200 },
+            { symbols: ["🎲", "🎲", "🎲"], payout: 300 },
+            { symbols: ["🃏", "🃏", "🃏"], payout: 400 },
+            { symbols: ["👑", "👑", "👑"], payout: 600 },
+            { symbols: ["💎", "💎", "💎"], payout: 700 },
+            { symbols: ["🎩", "🎩", "🎩"], payout: 800 },
+            { symbols: ["🍾", "🍾", "🍾"], payout: 900 },
           ],
           jackpot: 5000,
           bonusSymbol: "🍀",
