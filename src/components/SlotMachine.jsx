@@ -1,7 +1,61 @@
 import React, { useState } from "react";
 import { Box, Button, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 
-const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange }) => {
+const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange, onSpinHistoryUpdate, onSaveFavoriteBet, onScheduleAutoSpin, onSocialShare, onSetLossLimit, onBuyInsurance, onCustomizeTheme, onInviteFriend }) => {
+  const [spinHistory, setSpinHistory] = useState([]);
+  const [favoriteBets, setFavoriteBets] = useState([]);
+  const [autoSpinInterval, setAutoSpinInterval] = useState(null);
+  const [lossLimit, setLossLimit] = useState(null);
+  const [insurance, setInsurance] = useState(false);
+  const [customTheme, setCustomTheme] = useState(null);
+  const [referralBonus, setReferralBonus] = useState(null);
+
+  const updateSpinHistory = (result, payout) => {
+    const newHistory = [{ result, payout }, ...spinHistory].slice(0, 10);
+    setSpinHistory(newHistory);
+    onSpinHistoryUpdate(newHistory);
+  };
+
+  const saveFavoriteBet = (bet) => {
+    const newFavorites = [...favoriteBets, bet];
+    setFavoriteBets(newFavorites);
+    onSaveFavoriteBet(newFavorites);
+  };
+
+  const scheduleAutoSpin = (interval) => {
+    clearInterval(autoSpinInterval);
+    const newInterval = setInterval(() => spin(), interval);
+    setAutoSpinInterval(newInterval);
+    onScheduleAutoSpin(newInterval);
+  };
+
+  const shareWin = (payout) => {
+    const message = `I just won ${payout} on Double Diamond Slots!`;
+    navigator.share({ title: "Double Diamond Slots Win", text: message });
+    onSocialShare(message);
+  };
+
+  const handleLossLimit = (limit) => {
+    setLossLimit(limit);
+    onSetLossLimit(limit);
+  };
+
+  const buyInsurance = () => {
+    setInsurance(true);
+    onBuyInsurance();
+  };
+
+  const customizeTheme = (theme) => {
+    setCustomTheme(theme);
+    onCustomizeTheme(theme);
+  };
+
+  const inviteFriend = (email) => {
+    console.log(`Invite sent to ${email}`);
+    setReferralBonus(referralBonus + 100);
+    onInviteFriend(email);
+  };
+
   const [slots, setSlots] = useState(Array(3).fill(config.symbols[0]));
   const [jackpot, setJackpot] = useState(config.jackpot);
   const [paylines, setPaylines] = useState(1);
