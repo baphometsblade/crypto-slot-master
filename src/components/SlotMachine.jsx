@@ -73,15 +73,16 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
     spinSound.volume = 0.5;
     setTimeout(() => {
       let winnings = 0;
-
       const newSlots = slots.map(() => config.symbols[Math.floor(Math.random() * config.symbols.length)]);
       setSlots(newSlots);
       winnings = newSlots.reduce((acc, line) => {
         const payout = config.payouts.find((p) => p.symbols.every((symbol, index) => symbol === line[index]))?.payout || 0;
-        return acc + payout * bet;
+        const multiplier = line.length === new Set(line).size ? 1 : line.length;
+        return acc + payout * bet * multiplier;
       }, 0);
       setBalance(balance + winnings);
       setLastWin(winnings);
+      updateSpinHistory(newSlots, winnings);
       setIsSpinning(false);
     }, 1000);
   };
