@@ -37,26 +37,11 @@ const Navbar = () => {
             <MenuItem as={Link} to="/bonusbonanza">
               Bonus Bonanza
             </MenuItem>
-            <MenuItem as={Link} to="/goldenwheel">
-              Golden Wheel
+            <MenuItem as={Link} to="/profile">
+              Profile
             </MenuItem>
-            <MenuItem as={Link} to="/jackpotjester">
-              Jackpot Jester
-            </MenuItem>
-            <MenuItem as={Link} to="/megafortune">
-              Mega Fortune
-            </MenuItem>
-            <MenuItem as={Link} to="/royalriches">
-              Royal Riches
-            </MenuItem>
-            <MenuItem as={Link} to="/leaderboard">
-              Leaderboard
-            </MenuItem>
-            <MenuItem as={Link} to="/achievements">
-              Achievements
-            </MenuItem>
-            <MenuItem as={Link} to="/dailybonus">
-              Daily Bonus
+            <MenuItem as={Link} to="/settings">
+              Settings
             </MenuItem>
             <MenuItem as={Link} to="/profile">
               Profile
@@ -90,26 +75,11 @@ const Navbar = () => {
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
         </Link>
-        <Link to="/goldenwheel" style={{ marginRight: "1rem" }}>
-          Golden Wheel
+        <Link to="/profile" style={{ marginRight: "1rem" }}>
+          Profile
         </Link>
-        <Link to="/jackpotjester" style={{ marginRight: "1rem" }}>
-          Jackpot Jester
-        </Link>
-        <Link to="/megafortune" style={{ marginRight: "1rem" }}>
-          Mega Fortune
-        </Link>
-        <Link to="/royalriches" style={{ marginRight: "1rem" }}>
-          Royal Riches
-        </Link>
-        <Link to="/leaderboard" style={{ marginRight: "1rem" }}>
-          Leaderboard
-        </Link>
-        <Link to="/achievements" style={{ marginRight: "1rem" }}>
-          Achievements
-        </Link>
-        <Link to="/dailybonus" style={{ marginRight: "1rem" }}>
-          Daily Bonus
+        <Link to="/settings" style={{ marginRight: "1rem" }}>
+          Settings
         </Link>
         <Link to="/bonusbonanza" style={{ marginRight: "1rem" }}>
           Bonus Bonanza
