@@ -68,7 +68,9 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   const [lastWin, setLastWin] = useState(0);
   const spin = () => {
     setIsSpinning(true);
-    new Audio("/sounds/spin.mp3").play();
+    const spinSound = new Audio("/sounds/spin.mp3");
+    spinSound.play();
+    spinSound.volume = 0.5;
     setTimeout(() => {
       let winnings = 0;
 
@@ -150,7 +152,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
 
   return (
     <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="xl">
-      <VStack spacing={6} animation="pulse 2s infinite">
+      <VStack spacing={6} animation="pulse 2s infinite" transition="transform 0.3s ease-in-out">
         <Heading color="white" textShadow="0 0 20px rgba(255,255,255,0.5)" animation="pulse 1s infinite">
           Balance: ${balance}
         </Heading>
@@ -158,7 +160,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           Jackpot: ${jackpot.toFixed(2)}
         </Heading>
         <Box display="flex" justifyContent="center" alignItems="center" bg="gray.900" borderRadius="md" p={4} boxShadow="inner">
-          <SimpleGrid columns={3} spacing={8}>
+          <SimpleGrid columns={3} spacing={8} animation="spin 1s ease-in-out">
             {slots.map((line, i) => (
               <Box key={i}>
                 {line.map((slot, j) => (
@@ -192,7 +194,20 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
             ))}
           </Box>
         </Box>
-        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 30px rgba(0,255,0,1.0)", transform: "scale(1.05)" }} onAnimationEnd={() => setBalance((balance) => balance + 100)}>
+        <Button
+          onClick={() => spin()}
+          colorScheme="green"
+          size="lg"
+          boxShadow="0 0 20px rgba(0,255,0,0.5)"
+          isLoading={isSpinning}
+          loadingText="Spinning..."
+          _hover={{ boxShadow: "0 0 30px rgba(0,255,0,1.0)", transform: "scale(1.05)" }}
+          onAnimationEnd={() => setBalance((balance) => balance + 100)}
+          onDoubleClick={() => {
+            spin();
+            setTimeout(spin, 500);
+          }}
+        >
           Spin
         </Button>
         <Button colorScheme="orange" size="lg" boxShadow="0 0 20px rgba(255,165,0,0.5)" _hover={{ boxShadow: "0 0 20px rgba(255,165,0,0.8)" }} ml={4} onClick={maxBet}>
