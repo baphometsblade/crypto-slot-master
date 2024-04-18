@@ -26,6 +26,7 @@ const FruitFrenzy = () => {
           bonusSymbol: "🍓",
           bonusMultiplier: 2,
           betOptions: [1, 2, 3, 5],
+          layout: "5x3",
         }}
       />
     </Box>

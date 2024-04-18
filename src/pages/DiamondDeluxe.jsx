@@ -26,6 +26,7 @@ const DiamondDeluxe = () => {
           bonusSymbol: "💎",
           bonusMultiplier: 5,
           betOptions: [1, 2, 5, 10, 20, 50],
+          layout: "5x3",
         }}
       />
     </Box>

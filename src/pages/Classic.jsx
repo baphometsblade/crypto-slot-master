@@ -37,6 +37,7 @@ const Classic = () => {
           bonusSymbol: "🍀",
           bonusMultiplier: 3,
           betOptions: [1, 2, 3, 5, 10],
+          layout: "5x3",
           wilds: ["🎩"],
           scatters: ["🎰"],
           layout: "5x3",

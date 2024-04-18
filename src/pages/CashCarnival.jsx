@@ -26,6 +26,7 @@ const CashCarnival = () => {
           bonusSymbol: "🎟️",
           bonusMultiplier: 3,
           betOptions: [1, 2, 5, 10, 20, 50, 100],
+          layout: "5x3",
           gamble: {
             type: "color",
             choices: ["Red", "Black"],
