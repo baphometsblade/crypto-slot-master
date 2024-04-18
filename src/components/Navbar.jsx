@@ -5,7 +5,7 @@ import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   return (
-    <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1.5rem" bg="brand.900" color="white" boxShadow="0px 6px 15px rgba(0,0,0,0.7)">
+    <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1.5rem" bg="brand.900" color="white" boxShadow="0px 6px 15px rgba(0,0,0,0.7)" _hover={{ bg: "brand.800" }}>
       <Flex align="center" mr={5}>
         <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
           Double Diamond Slots

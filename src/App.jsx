@@ -16,7 +16,7 @@ import BonusBonanza from "./pages/BonusBonanza";
 function App() {
   return (
     <Router>
-      <Box bg="background.500" minHeight="100vh" p={4}>
+      <Box bg="background.500" minHeight="100vh" p={4} bgImage="url('/images/casino-bg.jpg')" bgSize="cover" bgPosition="center">
         <Navbar />
         <Routes>
           <Route path="/" element={<Index />} />
