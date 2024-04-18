@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Heading, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, Heading, SimpleGrid, Text, VStack, Spinner } from "@chakra-ui/react";
 
 const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange, onSpinHistoryUpdate, onSaveFavoriteBet, onScheduleAutoSpin, onSocialShare, onSetLossLimit, onBuyInsurance, onCustomizeTheme, onInviteFriend }) => {
   const [spinHistory, setSpinHistory] = useState([]);
@@ -179,7 +179,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           </Text>
           <Box display="flex">
             {config.betOptions.map((option) => (
-              <Button key={option} onClick={() => setBet(option)} variant={bet === option ? "solid" : "outline"} colorScheme="blue" mx={2}>
+              <Button key={option} onClick={() => setBet(option)} variant={bet === option ? "solid" : "outline"} colorScheme="blue" mx={2} _hover={{ bg: "blue.700", color: "white" }}>
                 ${option}
               </Button>
             ))}
@@ -201,6 +201,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           size="lg"
           boxShadow="0 0 20px rgba(0,255,0,0.5)"
           isLoading={isSpinning}
+          spinner={<Spinner size="lg" />}
           loadingText="Spinning..."
           _hover={{ boxShadow: "0 0 30px rgba(0,255,0,1.0)", transform: "scale(1.05)" }}
           onAnimationEnd={() => setBalance((balance) => balance + 100)}

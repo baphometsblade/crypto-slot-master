@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Flex, Heading, Spacer } from "@chakra-ui/react";
+import { Box, Flex, Heading, Spacer, Menu, MenuButton, MenuList, MenuItem, IconButton } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,55 @@ const Navbar = () => {
         </Heading>
       </Flex>
 
-      <Box display={{ base: "block", md: "none" }}>{}</Box>
+      <Box display={{ base: "block", md: "none" }}>
+        <Menu>
+          <MenuButton as={IconButton} icon={<FaBars />} variant="outline" aria-label="Options" />
+          <MenuList>
+            <MenuItem as={Link} to="/">
+              Home
+            </MenuItem>
+            <MenuItem as={Link} to="/classic">
+              Classic
+            </MenuItem>
+            <MenuItem as={Link} to="/lucky7">
+              Lucky 7
+            </MenuItem>
+            <MenuItem as={Link} to="/fruitfrenzy">
+              Fruit Frenzy
+            </MenuItem>
+            <MenuItem as={Link} to="/cashcarnival">
+              Cash Carnival
+            </MenuItem>
+            <MenuItem as={Link} to="/diamonddeluxe">
+              Diamond Deluxe
+            </MenuItem>
+            <MenuItem as={Link} to="/bonusbonanza">
+              Bonus Bonanza
+            </MenuItem>
+            <MenuItem as={Link} to="/goldenwheel">
+              Golden Wheel
+            </MenuItem>
+            <MenuItem as={Link} to="/jackpotjester">
+              Jackpot Jester
+            </MenuItem>
+            <MenuItem as={Link} to="/megafortune">
+              Mega Fortune
+            </MenuItem>
+            <MenuItem as={Link} to="/royalriches">
+              Royal Riches
+            </MenuItem>
+            <MenuItem as={Link} to="/leaderboard">
+              Leaderboard
+            </MenuItem>
+            <MenuItem as={Link} to="/achievements">
+              Achievements
+            </MenuItem>
+            <MenuItem as={Link} to="/dailybonus">
+              Daily Bonus
+            </MenuItem>
+          </MenuList>
+        </Menu>
+      </Box>
 
       <Box display={{ base: "none", md: "flex" }} width={{ base: "full", md: "auto" }} alignItems="center">
         <Link to="/" style={{ marginRight: "1rem", fontWeight: "bold" }}>
