@@ -67,9 +67,20 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
 
   const [lastWin, setLastWin] = useState(0);
   const spin = () => {
-    let winnings = 0;
+    setIsSpinning(true);
+    setTimeout(() => {
+      let winnings = 0;
 
-    setLastWin(winnings);
+      const newSlots = slots.map(() => config.symbols[Math.floor(Math.random() * config.symbols.length)]);
+      setSlots(newSlots);
+      winnings = newSlots.reduce((acc, line) => {
+        const payout = config.payouts.find(p => p.symbols.every((symbol, index) => symbol === line[index]))?.payout || 0;
+        return acc + (payout * bet);
+      }, 0);
+      setBalance(balance + winnings);
+      setLastWin(winnings);
+      setIsSpinning(false);
+    }, 1000);
   };
 
   const maxBet = () => {
@@ -138,7 +149,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
 
   return (
     <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="xl">
-      <VStack spacing={6}>
+      <VStack spacing={6} animation="pulse 2s infinite">
         <Heading color="white" textShadow="0 0 20px rgba(255,255,255,0.5)">
           Balance: ${balance}
         </Heading>
@@ -178,7 +189,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
             ))}
           </Box>
         </Box>
-        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 20px rgba(0,255,0,0.8)" }}>
+        <Button onClick={() => spin()} colorScheme="green" size="lg" boxShadow="0 0 20px rgba(0,255,0,0.5)" isLoading={isSpinning} loadingText="Spinning..." _hover={{ boxShadow: "0 0 30px rgba(0,255,0,1.0)", transform: "scale(1.05)" }}>
           Spin
         </Button>
         <Button colorScheme="orange" size="lg" boxShadow="0 0 20px rgba(255,165,0,0.5)" _hover={{ boxShadow: "0 0 20px rgba(255,165,0,0.8)" }} ml={4} onClick={maxBet}>
