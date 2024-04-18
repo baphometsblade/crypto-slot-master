@@ -37,6 +37,8 @@ const Lucky7 = () => {
           bonusSymbol: "🎰",
           bonusMultiplier: 5,
           betOptions: [1, 2, 3, 5, 10, 20],
+          wilds: ["👑"],
+          scatters: ["🎲"],
         }}
       />
     </Box>

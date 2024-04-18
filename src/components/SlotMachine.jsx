@@ -56,7 +56,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
     onInviteFriend(email);
   };
 
-  const [slots, setSlots] = useState(Array(3).fill(config.symbols[0]));
+  const [slots, setSlots] = useState(Array(5).fill(config.symbols[0]));
   const [jackpot, setJackpot] = useState(config.jackpot);
   const [paylines, setPaylines] = useState(1);
   const [bonusGame, setBonusGame] = useState(null);
@@ -64,6 +64,8 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   const [balance, setBalance] = useState(1000);
   const [bet, setBet] = useState(config.betOptions[0]);
   const [isSpinning, setIsSpinning] = useState(false);
+  const [wilds, setWilds] = useState(config.wilds || []);
+  const [scatters, setScatters] = useState(config.scatters || []);
 
   const [lastWin, setLastWin] = useState(0);
   const spin = () => {
