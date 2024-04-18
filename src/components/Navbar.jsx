@@ -58,6 +58,12 @@ const Navbar = () => {
             <MenuItem as={Link} to="/dailybonus">
               Daily Bonus
             </MenuItem>
+            <MenuItem as={Link} to="/profile">
+              Profile
+            </MenuItem>
+            <MenuItem as={Link} to="/settings">
+              Settings
+            </MenuItem>
           </MenuList>
         </Menu>
       </Box>
