@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, Heading, SimpleGrid, Text, VStack, Spinner } from "@chakra-ui/react";
+import { Box, Button, Heading, SimpleGrid, Text, VStack, Spinner, Slider, SliderTrack, SliderFilledTrack, SliderThumb } from "@chakra-ui/react";
 
 const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange, onSpinHistoryUpdate, onSaveFavoriteBet, onScheduleAutoSpin, onSocialShare, onSetLossLimit, onBuyInsurance, onCustomizeTheme, onInviteFriend }) => {
   const [spinHistory, setSpinHistory] = useState([]);
@@ -154,20 +154,20 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   };
 
   return (
-    <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.800" boxShadow="xl">
-      <VStack spacing={6} animation="pulse 2s infinite" transition="transform 0.3s ease-in-out">
-        <Heading color="white" textShadow="0 0 20px rgba(255,255,255,0.5)" animation="pulse 1s infinite">
+    <Box borderWidth={2} borderRadius="lg" p={6} bg="gray.900" boxShadow="dark-lg">
+      <VStack spacing={4} animation="fadeIn 1s">
+        <Heading color="white" textShadow="0 0 10px rgba(255,255,255,0.9)">
           Balance: ${balance}
         </Heading>
-        <Heading color="yellow.500" size="lg" textShadow="0 0 20px rgba(255,215,0,0.5)">
+        <Heading color="yellow.300" size="lg" textShadow="0 0 10px rgba(255,215,0,0.9)">
           Jackpot: ${jackpot.toFixed(2)}
         </Heading>
-        <Box display="flex" justifyContent="center" alignItems="center" bg="gray.900" borderRadius="md" p={4} boxShadow="inner">
-          <SimpleGrid columns={3} spacing={8} animation="spin 1s ease-in-out">
+        <Box display="flex" justifyContent="center" alignItems="center" bg="blackAlpha.800" borderRadius="md" p={4} boxShadow="dark-lg">
+          <SimpleGrid columns={3} spacing={5} animation="spin 1s ease-in-out">
             {slots.map((line, i) => (
-              <Box key={i}>
+              <Box key={i} bg="gray.700" p={2} borderRadius="md">
                 {line.map((slot, j) => (
-                  <Box key={j} fontSize="6xl" textShadow="0 0 20px rgba(255,255,255,0.5)" transition="transform 0.5s" _hover={{ transform: "scale(1.1)" }}>
+                  <Box key={j} fontSize="5xl" textShadow="0 0 10px rgba(255,255,255,0.9)" transition="transform 0.5s" _hover={{ transform: "scale(1.1)" }}>
                     {slot}
                   </Box>
                 ))}
@@ -179,13 +179,12 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           <Text color="white" animation="fadeIn 1s">
             Bet per line:
           </Text>
-          <Box display="flex">
-            {config.betOptions.map((option) => (
-              <Button key={option} onClick={() => setBet(option)} variant={bet === option ? "solid" : "outline"} colorScheme="blue" mx={2} _hover={{ bg: "blue.700", color: "white" }}>
-                ${option}
-              </Button>
-            ))}
-          </Box>
+          <Slider aria-label="bet-slider" defaultValue={bet} min={config.betOptions[0]} max={config.betOptions[config.betOptions.length - 1]} step={config.betOptions[1] - config.betOptions[0]} onChangeEnd={(val) => setBet(val)}>
+            <SliderTrack bg="blue.100">
+              <SliderFilledTrack bg="blue.500" />
+            </SliderTrack>
+            <SliderThumb boxSize={6} />
+          </Slider>
         </Box>
         <Box>
           <Text color="white">Paylines:</Text>
