@@ -39,6 +39,7 @@ const Classic = () => {
           betOptions: [1, 2, 3, 5, 10],
           wilds: ["🎩"],
           scatters: ["🎰"],
+          layout: "5x3",
         }}
       />
     </Box>
