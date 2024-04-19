@@ -43,12 +43,6 @@ const Navbar = () => {
             <MenuItem as={Link} to="/settings">
               Settings
             </MenuItem>
-            <MenuItem as={Link} to="/profile">
-              Profile
-            </MenuItem>
-            <MenuItem as={Link} to="/settings">
-              Settings
-            </MenuItem>
           </MenuList>
         </Menu>
       </Box>
