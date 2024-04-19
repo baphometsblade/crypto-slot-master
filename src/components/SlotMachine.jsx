@@ -209,7 +209,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           isLoading={isSpinning}
           spinner={<Spinner size="lg" />}
           loadingText="Spinning..."
-          _hover={{ boxShadow: "0 0 30px rgba(0,255,0,1.0)", transform: "scale(1.05)" }}
+          _hover={{ boxShadow: "0 0 40px rgba(0,255,0,1.2)", transform: "scale(1.1)" }}
           onAnimationEnd={() => setBalance((balance) => balance + 100)}
           onDoubleClick={() => {
             spin();

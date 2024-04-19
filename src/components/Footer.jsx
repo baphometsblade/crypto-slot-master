@@ -1,9 +1,10 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
+import { FaHome, FaBook, FaGavel } from "react-icons/fa";
 
 function Footer() {
   return (
-    <Box bg="gray.800" color="white" p={4} textAlign="center" display="flex" justifyContent="space-around" alignItems="center">
+    <Box bg="gray.900" color="white" p={4} textAlign="center" display="flex" justifyContent="space-between" alignItems="center">
       <Text>
         <FaHome /> © 2024 Casino Site. All rights reserved.
       </Text>
