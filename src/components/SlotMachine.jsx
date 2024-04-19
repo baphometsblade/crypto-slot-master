@@ -56,7 +56,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
     onInviteFriend(email);
   };
 
-  const [slots, setSlots] = useState(Array(5).fill(config.symbols[0]));
+  const [slots, setSlots] = useState(Array.from({ length: 5 }, () => Array(3).fill(config.symbols[0])));
   const [jackpot, setJackpot] = useState(config.jackpot);
   const [paylines, setPaylines] = useState(1);
   const [bonusGame, setBonusGame] = useState(null);
@@ -164,14 +164,14 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
         </Heading>
         <Box display="flex" justifyContent="center" alignItems="center" bg="blackAlpha.800" borderRadius="md" p={4} boxShadow="dark-lg">
           <SimpleGrid columns={3} spacing={5} animation="spin 1s ease-in-out">
-            {slots.map((line, i) => (
-              <Box key={i} bg="gray.700" p={2} borderRadius="md">
-                {line.map((slot, j) => (
-                  <Box key={j} fontSize="5xl" textShadow="0 0 10px rgba(255,255,255,0.9)" transition="transform 0.5s" _hover={{ transform: "scale(1.1)" }}>
-                    {slot}
+            {slots.map((reel, i) => (
+              <VStack key={i}>
+                {reel.map((symbol, j) => (
+                  <Box key={`${i}-${j}`} bg="gray.700" p={2} borderRadius="md" fontSize="5xl" textShadow="0 0 10px rgba(255,255,255,0.9)" transition="transform 0.5s" _hover={{ transform: "scale(1.1)" }}>
+                    {symbol}
                   </Box>
                 ))}
-              </Box>
+              </VStack>
             ))}
           </SimpleGrid>
         </Box>
