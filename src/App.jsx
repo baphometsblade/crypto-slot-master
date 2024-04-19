@@ -12,6 +12,10 @@ import FruitFrenzy from "./pages/FruitFrenzy";
 import CashCarnival from "./pages/CashCarnival";
 import DiamondDeluxe from "./pages/DiamondDeluxe";
 import BonusBonanza from "./pages/BonusBonanza";
+import GoldenWheel from "./pages/GoldenWheel";
+import JackpotJester from "./pages/JackpotJester";
+import MegaFortune from "./pages/MegaFortune";
+import RoyalRiches from "./pages/RoyalRiches";
 
 function App() {
   return (
@@ -28,6 +32,10 @@ function App() {
           <Route path="/bonusbonanza" element={<BonusBonanza />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/goldenwheel" element={<GoldenWheel />} />
+          <Route path="/jackpotjester" element={<JackpotJester />} />
+          <Route path="/megafortune" element={<MegaFortune />} />
+          <Route path="/royalriches" element={<RoyalRiches />} />
         </Routes>
         <Footer />
       </Box>
