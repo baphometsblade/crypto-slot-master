@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <Flex as="nav" align="center" justify="space-between" wrap="wrap" padding="1rem" bg="brand.900" color="white" boxShadow="0px 4px 10px rgba(0,0,0,0.5)" _hover={{ bg: "brand.800", transform: "scale(1.05)" }}>
       <Flex align="center" mr={5}>
-        <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
+        <Heading as="h1" size="xl" letterSpacing={"-.1rem"} padding="0.5rem">
           Double Diamond Slots
         </Heading>
       </Flex>

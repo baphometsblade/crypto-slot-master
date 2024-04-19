@@ -5,7 +5,7 @@ import SlotMachine from "../components/SlotMachine";
 const BonusBonanza = () => {
   return (
     <Box p={8}>
-      <Heading size="2xl" mb="8" textAlign="center" color="white">
+      <Heading size="xl" mb="4" textAlign="center" color="yellow.300">
         Bonus Bonanza Slot Machine
       </Heading>
       <SlotMachine

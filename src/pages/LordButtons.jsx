@@ -3,7 +3,7 @@ import { Box, Heading, Text } from "@chakra-ui/react";
 
 const LordButtons = () => {
   return (
-    <Box p={8}>
+    <Box p={12}>
       <Heading size="2xl" mb={4} color="white">
         Lord Buttons
       </Heading>

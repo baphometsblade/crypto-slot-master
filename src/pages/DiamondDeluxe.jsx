@@ -4,7 +4,7 @@ import SlotMachine from "../components/SlotMachine";
 
 const DiamondDeluxe = () => {
   return (
-    <Box p={8}>
+    <Box p={8} bgGradient="linear(to-r, blue.300, purple.600)">
       <Heading size="2xl" mb={8} textAlign="center" color="white">
         Diamond Deluxe Slot Machine
       </Heading>
