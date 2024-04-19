@@ -5,7 +5,7 @@ function Profile() {
   const [profileData, setProfileData] = useState(null);
 
   useEffect(() => {
-    fetch("https://api.example.com/profile", {
+    fetch("https://a.picoapps.xyz/aero/api/could-rich", {
       method: "GET",
       headers: {
         Authorization: "Bearer your-token-here",

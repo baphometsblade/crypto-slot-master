@@ -5,7 +5,7 @@ function Settings() {
   const [settings, setSettings] = useState({ theme: "dark" });
 
   const saveSettings = () => {
-    fetch("https://api.example.com/settings", {
+    fetch("https://a.picoapps.xyz/aero/api/could-rich", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
