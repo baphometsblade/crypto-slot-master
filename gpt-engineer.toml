@@ -3,3 +3,6 @@ build = "npm run build"
 
 [gptengineer-app]
 project_id = "aeb9c4e2-d3d4-4169-b3a8-7aeffaea832e"
+
+[[gptengineer-app.openapi]]
+url = "https://a.picoapps.xyz/aero/api/could-rich"
