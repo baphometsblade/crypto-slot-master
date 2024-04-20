@@ -4,7 +4,7 @@ import { FaHome, FaBook, FaGavel } from "react-icons/fa";
 
 function Footer() {
   return (
-    <Box bg="gray.900" color="white" p={4} textAlign="center" display="flex" justifyContent="space-between" alignItems="center" _hover={{ color: "gray.300" }}>
+    <Box bg="gray.900" color="white" p={4} textAlign="center" display="flex" justifyContent="space-around" alignItems="center" _hover={{ color: "yellow.300", transform: "scale(1.05)" }}>
       <Text>
         <FaHome /> © 2024 Casino Site. All rights reserved.
       </Text>
