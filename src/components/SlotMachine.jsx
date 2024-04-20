@@ -68,34 +68,33 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
   const [scatters, setScatters] = useState(config.scatters || []);
 
   const [lastWin, setLastWin] = useState(0);
-  const spin = () => {
+  const spin = async () => {
     setIsSpinning(true);
     const spinSound = new Audio("/sounds/spin.mp3");
     spinSound.play();
     spinSound.volume = 0.5;
-    setTimeout(() => {
-      let winnings = 0;
-      const newSlots = slots.map(() => {
-        const randomIndex = Math.floor(Math.random() * config.symbols.length);
-        const symbol = config.symbols[randomIndex];
-        const isJackpot = Math.random() < 0.01;
-        return isJackpot ? config.jackpotSymbol : symbol;
-      });
-      setSlots(newSlots);
-      winnings = newSlots.reduce((acc, line) => {
-        const payout = config.payouts.find((p) => p.symbols.every((symbol, index) => symbol === line[index]))?.payout || 0;
-        const multiplier = line.length === new Set(line).size ? 1 : line.length;
-        return acc + payout * bet * multiplier;
-      }, 0);
-      if (newSlots.every((symbol) => symbol === config.jackpotSymbol)) {
-        winnings += config.jackpot;
-        setJackpot(config.initialJackpot);
-      }
-      setBalance(balance + winnings);
-      setLastWin(winnings);
-      updateSpinHistory(newSlots, winnings);
-      setIsSpinning(false);
-    }, 1000);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    let winnings = 0;
+    const newSlots = slots.map(() => {
+      const randomIndex = Math.floor(Math.random() * config.symbols.length);
+      const symbol = config.symbols[randomIndex];
+      const isJackpot = Math.random() < 0.01;
+      return isJackpot ? config.jackpotSymbol : symbol;
+    });
+    setSlots(newSlots);
+    winnings = newSlots.reduce((acc, line) => {
+      const payout = config.payouts.find((p) => p.symbols.every((symbol, index) => symbol === line[index]))?.payout || 0;
+      const multiplier = line.length === new Set(line).size ? 1 : line.length;
+      return acc + payout * bet * multiplier;
+    }, 0);
+    if (newSlots.every((symbol) => symbol === config.jackpotSymbol)) {
+      winnings += config.jackpot;
+      setJackpot(config.initialJackpot);
+    }
+    setBalance(balance + winnings);
+    setLastWin(winnings);
+    updateSpinHistory(newSlots, winnings);
+    setIsSpinning(false);
   };
 
   const maxBet = () => {

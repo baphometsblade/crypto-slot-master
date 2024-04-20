@@ -13,7 +13,10 @@ function Profile() {
     })
       .then((response) => response.json())
       .then((data) => setProfileData(data))
-      .catch((error) => console.error("Error fetching profile data:", error));
+      .catch((error) => {
+        console.error("Error fetching profile data:", error);
+        alert("Failed to fetch profile data. Please try again later.");
+      });
   }, []);
 
   return (

@@ -15,7 +15,10 @@ function Settings() {
     })
       .then((response) => response.json())
       .then((data) => console.log("Settings saved:", data))
-      .catch((error) => console.error("Error saving settings:", error));
+      .catch((error) => {
+        console.error("Error saving settings:", error);
+        alert("Failed to save settings. Please try again later.");
+      });
   };
 
   return (
