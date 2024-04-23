@@ -163,12 +163,12 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
 
   return (
     <Box borderWidth={2} borderRadius="lg" p={4} bg="gray.900" boxShadow="dark-lg" overflow="hidden">
-      <Box bg="blue.900" p={2} mb={4} borderRadius="md">
+      <Box bg="linear-gradient(to right, #6a11cb, #2575fc)" p={2} mb={4} borderRadius="md">
         <Heading color="white" size="lg">
           Slot Machine: {config.theme}
         </Heading>
       </Box>
-      <VStack spacing={4} animation="fadeIn 1s, spin 2s linear infinite" transform="scale(1.1)" transition="transform 0.3s ease-in-out">
+      <VStack spacing={4} animation="fadeIn 1s, spin 2s ease-in-out infinite, pulse 2s infinite" transform="scale(1.1)" transition="transform 0.3s ease-in-out">
         <Heading color="white" textShadow="0 0 10px rgba(255,255,255,0.9)">
           Balance: ${balance}
         </Heading>
@@ -217,7 +217,7 @@ const SlotMachine = ({ config, onJackpotWin, onBonusGameTrigger, onBalanceChange
           isLoading={isSpinning}
           spinner={<Spinner size="lg" />}
           loadingText="Spinning..."
-          _hover={{ boxShadow: "0 0 40px rgba(0,255,0,1), 0 0 60px rgba(0,255,0,0.9) inset", transform: "scale(1.2)" }}
+          _hover={{ boxShadow: "0 0 40px rgba(0,255,0,1), 0 0 60px rgba(0,255,0,0.9) inset", transform: "scale(1.3)" }}
           onAnimationEnd={() => setBalance((balance) => balance + 100)}
           onDoubleClick={() => {
             spin();
