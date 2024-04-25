@@ -10,17 +10,17 @@ const FruitFrenzy = () => {
       </Heading>
       <SlotMachine
         config={{
-          theme: "Fruit Frenzy",
-          symbols: ["🍒", "🍊", "🍋", "🍉", "🍇", "🍓", "🍍", "🥝", "🍈", "🍑", "🍐", "🍌"],
+          theme: "Tropical Paradise",
+          symbols: ["🌴", "🍍", "🥥", "🍹", "🌺", "🐠", "🏖️", "🌊"],
           payouts: [
-            { symbols: ["🍒", "🍒", "🍒"], payout: 2 },
-            { symbols: ["🍊", "🍊", "🍊"], payout: 4 },
-            { symbols: ["🍋", "🍋", "🍋"], payout: 6 },
-            { symbols: ["🍉", "🍉", "🍉"], payout: 8 },
-            { symbols: ["🍇", "🍇", "🍇"], payout: 10 },
-            { symbols: ["🍓", "🍓", "🍓"], payout: 20 },
-            { symbols: ["🍍", "🍍", "🍍"], payout: 50 },
-            { symbols: ["🥝", "🥝", "🥝"], payout: 100 },
+            { symbols: ["🌴", "🌴", "🌴"], payout: 50 },
+            { symbols: ["🍍", "🍍", "🍍"], payout: 100 },
+            { symbols: ["🥥", "🥥", "🥥"], payout: 150 },
+            { symbols: ["🍹", "🍹", "🍹"], payout: 200 },
+            { symbols: ["🌺", "🌺", "🌺"], payout: 250 },
+            { symbols: ["🐠", "🐠", "🐠"], payout: 300 },
+            { symbols: ["🏖️", "🏖️", "🏖️"], payout: 350 },
+            { symbols: ["🌊", "🌊", "🌊"], payout: 400 },
           ],
           jackpot: 20000,
           bonusSymbol: "🍓",
