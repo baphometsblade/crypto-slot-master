@@ -10,17 +10,17 @@ const Classic = () => {
       </Heading>
       <SlotMachine
         config={{
-          theme: "Vegas Nights",
-          symbols: ["🎰", "🎲", "🃏", "🍸", "💰", "👑", "🚗", "🏆"],
+          theme: "Classic Slots",
+          symbols: ["🍒", "🍋", "🍊", "🔔", "🍉", "🍇", "🎰", "7️⃣"],
           payouts: [
-            { symbols: ["🎰", "🎰", "🎰"], payout: 100 },
-            { symbols: ["🎲", "🎲", "🎲"], payout: 200 },
-            { symbols: ["🃏", "🃏", "🃏"], payout: 300 },
-            { symbols: ["🍸", "🍸", "🍸"], payout: 400 },
-            { symbols: ["💰", "💰", "💰"], payout: 500 },
-            { symbols: ["👑", "👑", "👑"], payout: 600 },
-            { symbols: ["🚗", "🚗", "🚗"], payout: 700 },
-            { symbols: ["🏆", "🏆", "🏆"], payout: 800 },
+            { symbols: ["🍒", "🍒", "🍒"], payout: 50 },
+            { symbols: ["🍋", "🍋", "🍋"], payout: 100 },
+            { symbols: ["🍊", "🍊", "🍊"], payout: 150 },
+            { symbols: ["🔔", "🔔", "🔔"], payout: 200 },
+            { symbols: ["🍉", "🍉", "🍉"], payout: 250 },
+            { symbols: ["🍇", "🍇", "🍇"], payout: 300 },
+            { symbols: ["🎰", "🎰", "🎰"], payout: 400 },
+            { symbols: ["7️⃣", "7️⃣", "7️⃣"], payout: 1000 },
           ],
           jackpot: 2000000,
           bonusSymbol: "🍀",
